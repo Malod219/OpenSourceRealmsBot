@@ -13,24 +13,25 @@ class admin:
     def __init__(self,bot):
         self.bot = bot
     
-    @commands.group(pass_context=True,brief='\n    kick [name]\n    ban [name]\n    chatpurge [number < 101]')
+    @commands.group(pass_context=True)
     async def admin(self,ctx):
         if ctx.message.author.server_permissions.administrator==False:
             await self.bot.say("You don't have permissions...")
         if ctx.invoked_subcommand is None:
             await self.bot.say('`No valid command entered`')
 
-            
     @admin.command(pass_context=True)
     async def help(self,ctx):
         embed = discord.Embed(title="Admin Commands", description="Admin Commands are:", color=0xeee657)
-        embed.add_field(name="ONLY WORKS WITH ADMINISTRATOR PERMISSION", value="", inline=False)
+        embed.add_field(name="NOTICE", value="ONLY WORKS WITH ADMINISTRATOR PERMISSION", inline=False)
         embed.add_field(name=">admin kick [name]", value="Kicks **name** from discord server.", inline=False)
         embed.add_field(name=">admin ban [name]", value="Bans **name** from discord server", inline=False)
         embed.add_field(name=">admin chatpurge [number]", value="Purges **number** messages from chat provided it is less than 101.", inline=False)
-        await self.bot.send_message(ctx.message.author, embed=embed)
+        try:
+            await self.bot.send_message(ctx.message.channel, embed=embed)
+        except:
+            print("Error")
 
-            
     @admin.command(pass_context=True)
     async def kick(self,ctx,userName:discord.User):
         if ctx.message.author.server_permissions.administrator==True:

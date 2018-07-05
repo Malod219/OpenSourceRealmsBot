@@ -29,11 +29,11 @@ class misc:
     @misc.command(pass_context=True)
     async def roll(self,ctx,*args):
         try:
-            number=int(args)
+            number=int(args[0])
+            outputNum=random.randint(0,number)
+            await self.bot.send_message(ctx.message.channel,"You rolled : "+str(outputNum)+"/"+str(number))
         except:
-            pass
-        outputNum=random.randint(0,number)
-        await self.bot.send_message(ctx.message.channel,"You rolled : "+str(outputNum))
+            await self.bot.send_message(ctx.message.channel,"You didn't input a number")
 
                     
 def setup(bot):
