@@ -15,3 +15,5 @@ https://discordapp.com/api/oauth2/authorize?client_id=463411732316946463&permiss
 Please note, to add/remove channels from recieving forum posts(RSS posts) you must be Administrator and all commands in Administrator.py require Administrator permissions.
 
 Use >help to get help once added.
+
+I do not recommend using this bot as it lacks many features that exist in MZBot. Please checkout my MZBot repository if you want a more useful codebase to rip
